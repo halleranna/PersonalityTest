@@ -12,6 +12,6 @@ Description: The Question class creates and produces questions for the Quiz. It 
 I am not sure if we will do fully multiple choice or allow for open-ended, so I included constructors for both for now. Can also get/set the text for questions
 and their potential answers. Stores the questions in an array so they can be accessed by other classes in the package.
 
-Quiz class - ??
+Quiz class - Dorris
 
 User class - Anna Haller
