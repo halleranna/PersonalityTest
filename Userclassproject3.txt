@@ -1,0 +1,67 @@
+/**
+ * Project: Project Phase 3
+ * Author: dorris tazi
+ * Date:4/8/2024
+ * Description: This class serves as a placeholder for the User class.
+ */
+public class User {
+    // Attributes
+    private String name;
+    private int age;
+    
+    // Default constructor
+    public User() {
+        // Initialize attributes with default values
+        this.name = "";
+        this.age = 0;
+    }
+    
+    // Constructor with name parameter
+    public User(String name) {
+        // Initialize attributes with provided values
+        this.name = name;
+        this.age = 0; // Default age
+    }
+    
+    // Constructor with name and age parameters
+    public User(String name, int age) {
+        // Initialize attributes with provided values
+        this.name = name;
+        this.age = age;
+    }
+    
+    // Getter for name
+    public String getName() {
+        return name;
+    }
+    
+    // Setter for name
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    // Getter for age
+    public int getAge() {
+        return age;
+    }
+    
+    // Setter for age
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        User user1 = new User(); // Default constructor
+        user1.setName("Alice"); // Set name
+        user1.setAge(30); // Set age
+
+        User user2 = new User("Bob"); // Constructor with name parameter
+        User user3 = new User("Charlie", 25); // Constructor with name and age parameters
+
+        // Print information
+        System.out.println("User 1: Name - " + user1.getName() + ", Age - " + user1.getAge());
+        System.out.println("User 2: Name - " + user2.getName() + ", Age - " + user2.getAge());
+        System.out.println("User 3: Name - " + user3.getName() + ", Age - " + user3.getAge());
+    }
+}
