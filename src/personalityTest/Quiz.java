@@ -1,11 +1,16 @@
-package personalityTest;
+/**
+ * This class represents a quiz with attributes and methods.
+ *
+ * @author: Dorris Tazi
+ * @date due: 5/1/2024
+ */
 
 public class Quiz {
     
     // Instance variables
     private String quizName;
     private int numberOfQuestions;
-    private boolean isCompleted; // New instance variable to track quiz completion
+    private boolean isCompleted;
     
     // Constructors
     
@@ -24,14 +29,18 @@ public class Quiz {
      * The completion status is set to false by default.
      */
     public Quiz(String quizName, int numberOfQuestions) {
-        this(quizName, numberOfQuestions, false); // Delegating to the other constructor
+        this.quizName = quizName;
+        this.numberOfQuestions = numberOfQuestions;
+        this.isCompleted = false; // Default completion status
     }
     
     /* 
      * Constructs a Quiz object with default values.
      */
     public Quiz() {
-        this("", 0, false); // Delegating to the other constructor with default values
+        this.quizName = "";
+        this.numberOfQuestions = 0;
+        this.isCompleted = false;
     }
     
     // Getters and Setters
@@ -44,7 +53,7 @@ public class Quiz {
     }
     
     /* 
-     *Creates name of the quiz.
+     * Sets the name of the quiz.
      */
     public void setQuizName(String quizName) {
         this.quizName = quizName;
@@ -77,6 +86,11 @@ public class Quiz {
     public void setCompleted(boolean completed) {
         this.isCompleted = completed;
     }
- 
     
+    /* 
+     * Records the answer to a question in the quiz.
+     */
+    public void recordAnswer(int questionNumber, String answer) {
+        System.out.println("Answer recorded for question " + questionNumber + ": " + answer);
+    }
 }
