@@ -1,98 +1,84 @@
 package personalityTest;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
- * This class represents a quiz with attributes and methods.
- *
+ * This class represents a quiz with attributes and methods that manage the process
+ * of conducting a quiz including storing questions, interacting with the user,
+ * and processing user responses to determine a personality match with SpongeBob characters.
+ * 
  * @author: Dorris Tazi
  * @date due: 5/1/2024
  */
-
 public class Quiz {
     
     // Instance variables
-    private String quizName;
-    private int numberOfQuestions;
-    private boolean isCompleted;
-    
-    // Constructors
-    
-    /* 
-     * Constructs a Quiz object with the given quiz name, number of questions,
-     * and completion status.
+    private String quizName;  // Name of the quiz
+    private ArrayList<Question> questions;  // List to store the questions of the quiz
+    private User user;  // User taking the quiz to record answers and calculate results
+    private boolean isCompleted;  // Flag to check if the quiz has been completed
+
+    /**
+     * Constructs a Quiz object with specified name and user. Initializes questions
+     * from a predefined method and sets the completion status to false by default.
+     * 
+     * @param quizName The name of the quiz
+     * @param user The user who will be taking the quiz
      */
-    public Quiz(String quizName, int numberOfQuestions, boolean isCompleted) {
+    public Quiz(String quizName, User user) {
         this.quizName = quizName;
-        this.numberOfQuestions = numberOfQuestions;
-        this.isCompleted = isCompleted;
-    }
-    
-    /* 
-     * Constructs a Quiz object with the given quiz name and number of questions.
-     * The completion status is set to false by default.
-     */
-    public Quiz(String quizName, int numberOfQuestions) {
-        this.quizName = quizName;
-        this.numberOfQuestions = numberOfQuestions;
-        this.isCompleted = false; // Default completion status
-    }
-    
-    /* 
-     * Constructs a Quiz object with default values.
-     */
-    public Quiz() {
-        this.quizName = "";
-        this.numberOfQuestions = 0;
+        this.questions = Question.createQuestions();  // Assuming createQuestions() returns a populated list of questions
+        this.user = user;
         this.isCompleted = false;
     }
     
-    // Getters and Setters
-    
-    /* 
-     * Returns the name of the quiz.
+    /**
+     * Starts the quiz, presents each question to the user, and records user responses.
+     * Marks the quiz as completed once all questions are answered and displays the result.
      */
-    public String getQuizName() {
-        return this.quizName;
+    public void startQuiz() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the " + this.quizName + " Quiz!");
+
+        for (Question question : questions) {
+            System.out.println(question.getQuestionText());
+            System.out.println(question.getFormattedAnswers());
+            System.out.print("Your answer (number): ");
+            int answerIndex = scanner.nextInt() - 1;
+            if (question.isAnswerIndexValid(answerIndex)) {
+                String chosenAnswer = question.getPossibleAnswers().get(answerIndex);
+                user.recordAnswer(chosenAnswer);  // User class records the answer
+            } else {
+                System.out.println("Invalid choice, please try again.");
+                answerIndex = scanner.nextInt() - 1;  // Simplified, consider looping until valid
+            }
+        }
+        this.isCompleted = true;
+        System.out.println("Quiz Completed. Calculating your results...");
+        System.out.println("You are most like: " + user.tabulateAlignment()); // Displays the result of which character the user is like
+
+        scanner.close();
     }
     
-    /* 
-     * Sets the name of the quiz.
-     */
+    // Standard getters and setters for class properties
+    public String getQuizName() {
+        return quizName;
+    }
+    
     public void setQuizName(String quizName) {
         this.quizName = quizName;
     }
     
-    /* 
-     * Returns the number of questions in the quiz.
-     */
     public int getNumberOfQuestions() {
-        return this.numberOfQuestions;
+        return questions.size();
     }
     
-    /* 
-     * Sets the number of questions in the quiz.
-     */
-    public void setNumberOfQuestions(int numberOfQuestions) {
-        this.numberOfQuestions = numberOfQuestions;
-    }
-    
-    /* 
-     * Returns true if the quiz is completed; otherwise, false.
-     */
-    public boolean isCompleted() {
-        return this.isCompleted;
-    }
-    
-    /* 
-     * Sets the completion status of the quiz.
-     */
     public void setCompleted(boolean completed) {
-        this.isCompleted = completed;
+        isCompleted = completed;
     }
     
-    /* 
-     * Records the answer to a question in the quiz.
-     */
-    public void recordAnswer(int questionNumber, String answer) {
-        System.out.println("Answer recorded for question " + questionNumber + ": " + answer);
+    public boolean isCompleted() {
+        return isCompleted;
     }
 }
