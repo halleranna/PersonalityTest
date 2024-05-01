@@ -1,3 +1,5 @@
+package personalityTest;
+
 /**
  * This class represents a quiz with attributes and methods.
  *
