@@ -1,4 +1,4 @@
-package lab9;
+package personalityTest;
 
 public class Quiz {
     
