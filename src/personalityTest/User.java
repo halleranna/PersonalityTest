@@ -19,13 +19,15 @@ public class User {
 
     private String name;
     private ArrayList<String> answers;
-    private String alignment; 
+    private String alignment;
+    private ArrayList<String> traits;
 
     // Constructor to initialize the User with a name.
     public User(String name) {
         this.name = name;
         this.answers = new ArrayList<>();
         this.alignment = "";
+        this.traits = new ArrayList<>();
     }
 
     // Method to record an answer into the user's list of answers.
@@ -33,6 +35,54 @@ public class User {
         this.answers.add(answer);
     }
 
+    //Assigns personality traits to the user based on
+	//the results of their quiz
+	protected void determineTraits(String characterName) {
+		switch(characterName) {
+		case "Spongebob":
+			this.traits.add("optimistic");
+			this.traits.add("friendly");
+			this.traits.add("energetic");
+			break;
+		case "Patrick":
+			this.traits.add("carefree");
+			this.traits.add("humorous");
+			this.traits.add("a bit slow");
+			break;
+		case "Squidward":
+			this.traits.add("cynical");
+			this.traits.add("artistic");
+			this.traits.add("introverted");
+			break;
+		case "Mr. Krabs":
+			this.traits.add("money-focused");
+			this.traits.add("shrewd");
+			this.traits.add("occasionally selfish");
+			break;
+		case "Sandy":
+			this.traits.add("intelligent");
+			this.traits.add("adventurous");
+			this.traits.add("scientifically-minded");
+			break;
+		} 
+	}
+	
+	//Returns a string that summarizes results for the user
+	protected String displayResults() {
+		String results = "Here are your results, " + this.name + "!\n\n"
+				+ "You are most like " + this.alignment + ".\n"
+				+ "You tend to be ";
+		for(int i = 0; i < this.traits.size(); i++) {
+			if(i == this.traits.size() - 1) {
+				results += "and " + this.traits.get(i) + ".\n\n";
+			} else {
+				results += this.traits.get(i) + ", ";
+			}
+		}
+		results += "Thanks for visiting Bikini Bottom!";
+		return results;
+	}
+	
     // Method created to analyze the user's answers and determine the most fitting character result
     public String tabulateAlignment() {
         // Making a mapping for the characters
