@@ -17,4 +17,6 @@ User class, GUI, test class - Anna Haller
 
 Known issues with the project:
 
-The GUI is incomplete. It does not run through the entire quiz; it crashes while loading the first question. This is why the console .jar was included. This still does not work properly as, after completing the quiz, the user's results are not displayed. There appears to be an issue in the tabulateAlignment function in the User class that is preventing the function's output from being assigned to the user's alignment attribute.
+The GUI is incomplete. It does not run through the entire quiz; it crashes while loading the first question. This is why the console .jar was included. The console version of the program should run as intended if proper input is provided. There is basic exception handling, but typeMismatch errors and the like are not address.
+
+The correct .jar file for the console version of the program is under the file name personalityTest_con.jar. This is a V2 upload.
