@@ -19,7 +19,7 @@ public class User {
 
     private String name;
     private ArrayList<String> answers;
-    private String alignment;
+    public String alignment;
     private ArrayList<String> traits;
 
     // Constructor to initialize the User with a name.
@@ -79,7 +79,7 @@ public class User {
 				results += this.traits.get(i) + ", ";
 			}
 		}
-		results += "Thanks for visiting Bikini Bottom!";
+		results += "\nThanks for visiting Bikini Bottom!";
 		return results;
 	}
 	
