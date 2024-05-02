@@ -56,7 +56,7 @@ public class Quiz {
         }
         this.isCompleted = true;
         System.out.println("Quiz Completed. Calculating your results...");
-        System.out.println("You are most like: " + user.tabulateAlignment()); // Displays the result of which character the user is like
+        System.out.println("You are most like: " + user.decidePersonality()); // Displays the result of which character the user is like
 
         scanner.close();
     }
