@@ -19,8 +19,17 @@ public class User {
 
     private String name;
     private ArrayList<String> answers;
-    public String alignment;
+    private String alignment;
     private ArrayList<String> traits;
+    
+    public void setAlignment(String alignment) {
+    	this.alignment = alignment;
+    }
+    
+    public String getAlignment() {
+    	return this.alignment;
+    }
+
 
     // Constructor to initialize the User with a name.
     public User(String name) {
@@ -34,12 +43,12 @@ public class User {
     public void recordAnswer(String answer) {
         this.answers.add(answer);
     }
-
+    
     //Assigns personality traits to the user based on
 	//the results of their quiz
 	protected void determineTraits(String characterName) {
 		switch(characterName) {
-		case "Spongebob":
+		case "SpongeBob":
 			this.traits.add("optimistic");
 			this.traits.add("friendly");
 			this.traits.add("energetic");

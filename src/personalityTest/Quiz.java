@@ -56,8 +56,8 @@ public class Quiz {
         }
         this.isCompleted = true;
         System.out.println("Quiz Completed. Calculating your results...");
-        user.tabulateAlignment();
-        System.out.print("user alignment: " + user.alignment); 
+        user.setAlignment(user.tabulateAlignment());
+        user.determineTraits(user.getAlignment());
         System.out.println(user.displayResults()); // Displays the result of which character the user is like
 
         scanner.close();
